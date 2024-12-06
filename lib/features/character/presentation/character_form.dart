@@ -80,136 +80,146 @@ class _CharacterFormState extends State<CharacterForm> {
         child: Column(
           children: [
             Expanded(
-              child: SingleChildScrollView(
-                  padding: const EdgeInsets.all(Amount.screenMargin),
-                  child: Form(
-                      key: _formKey,
-                      child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: widget.data?.avatar == null
-                                  ? _showImageSourceDialog
-                                  : null,
-                              child: Container(
-                                width: 100,
-                                height: 100,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF56636C),
-                                  borderRadius: BorderRadius.circular(50),
-                                  image: widget.data?.avatar != null
-                                      ? DecorationImage(
-                                          image: NetworkImage(
-                                              widget.data?.avatar ?? ""),
-                                          fit: BoxFit.cover,
-                                        )
-                                      : _image != null
-                                          ? DecorationImage(
-                                              image: FileImage(_image!),
-                                              fit: BoxFit.cover,
+              child: Column(
+                children: [
+                  Expanded(
+                    child: SingleChildScrollView(
+                        padding: const EdgeInsets.all(Amount.screenMargin),
+                        child: Form(
+                            key: _formKey,
+                            child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  GestureDetector(
+                                    onTap: widget.data?.avatar == null
+                                        ? _showImageSourceDialog
+                                        : null,
+                                    child: Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFF56636C),
+                                        borderRadius: BorderRadius.circular(50),
+                                        image: widget.data?.avatar != null
+                                            ? DecorationImage(
+                                                image: NetworkImage(
+                                                    widget.data?.avatar ?? ""),
+                                                fit: BoxFit.cover,
+                                              )
+                                            : _image != null
+                                                ? DecorationImage(
+                                                    image: FileImage(_image!),
+                                                    fit: BoxFit.cover,
+                                                  )
+                                                : null,
+                                      ),
+                                      child: widget.data?.avatar == null &&
+                                              _image == null
+                                          ? const Icon(
+                                              Icons.add,
+                                              size: 48,
+                                              color: AppColors.white,
                                             )
                                           : null,
-                                ),
-                                child: widget.data?.avatar == null &&
-                                        _image == null
-                                    ? const Icon(
-                                        Icons.add,
-                                        size: 48,
-                                        color: AppColors.white,
-                                      )
-                                    : null,
-                              ),
-                            ),
-                            const HeightBox(20),
-                            Text(
-                                widget.data != null
-                                    ? "Update Avatar"
-                                    : "Upload Avatar",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(
-                                        fontWeight: FontWeight.w500,
-                                        letterSpacing: 1)),
-                            const HeightBox(20),
-                            CusTextField(
-                              isValidator: true,
-                              hintText: "Name",
-                              focusNode: nameFocusNode,
-                              controller: nameController,
-                              textInputType: TextInputType.name,
-                              readOnly: false,
-                              labelText: LangConst.firstName,
-                              validatorMessage: "Please enter Name",
-                              nextNode: statusFocusNode,
-                            ),
-                            const HeightBox(15),
-                            CusTextField(
-                              isValidator: true,
-                              hintText: "Status",
-                              focusNode: statusFocusNode,
-                              controller: statusController,
-                              textInputType: TextInputType.text,
-                              readOnly: false,
-                              labelText: "Status",
-                              validatorMessage: "Please enter Status",
-                              nextNode: speciesFocusNode,
-                            ),
-                            const HeightBox(15),
-                            CusTextField(
-                              isValidator: true,
-                              hintText: "Species",
-                              focusNode: speciesFocusNode,
-                              controller: speciesController,
-                              textInputType: TextInputType.text,
-                              readOnly: false,
-                              labelText: "Species",
-                              validatorMessage: "Please enter Species",
-                              nextNode: genderFocusNode,
-                            ),
-                            const HeightBox(15),
-                            CusTextField(
-                              isValidator: true,
-                              hintText: "Gender",
-                              focusNode: genderFocusNode,
-                              controller: genderController,
-                              textInputType: TextInputType.text,
-                              readOnly: false,
-                              labelText: "Gender",
-                              validatorMessage: "Please enter Gender",
-                            ),
-                            const HeightBox(15),
-                          ]))),
+                                    ),
+                                  ),
+                                  const HeightBox(20),
+                                  Text(
+                                      widget.data != null
+                                          ? "Update Avatar"
+                                          : "Upload Avatar",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyLarge!
+                                          .copyWith(
+                                              fontWeight: FontWeight.w500,
+                                              letterSpacing: 1)),
+                                  const HeightBox(20),
+                                  CusTextField(
+                                    isValidator: true,
+                                    hintText: "Name",
+                                    focusNode: nameFocusNode,
+                                    controller: nameController,
+                                    textInputType: TextInputType.name,
+                                    readOnly: false,
+                                    labelText: LangConst.firstName,
+                                    validatorMessage: "Please enter Name",
+                                    nextNode: statusFocusNode,
+                                  ),
+                                  const HeightBox(15),
+                                  CusTextField(
+                                    isValidator: true,
+                                    hintText: "Status",
+                                    focusNode: statusFocusNode,
+                                    controller: statusController,
+                                    textInputType: TextInputType.text,
+                                    readOnly: false,
+                                    labelText: "Status",
+                                    validatorMessage: "Please enter Status",
+                                    nextNode: speciesFocusNode,
+                                  ),
+                                  const HeightBox(15),
+                                  CusTextField(
+                                    isValidator: true,
+                                    hintText: "Species",
+                                    focusNode: speciesFocusNode,
+                                    controller: speciesController,
+                                    textInputType: TextInputType.text,
+                                    readOnly: false,
+                                    labelText: "Species",
+                                    validatorMessage: "Please enter Species",
+                                    nextNode: genderFocusNode,
+                                  ),
+                                  const HeightBox(15),
+                                  CusTextField(
+                                    isValidator: true,
+                                    hintText: "Gender",
+                                    focusNode: genderFocusNode,
+                                    controller: genderController,
+                                    textInputType: TextInputType.text,
+                                    readOnly: false,
+                                    labelText: "Gender",
+                                    validatorMessage: "Please enter Gender",
+                                  ),
+                                  const HeightBox(15),
+                                ]))),
+                  ),
+                ],
+              ),
             ),
+            Container(
+              width: double.infinity,
+              child: CustomButton(
+                
+                text: widget.data == null ? "Save" : "Update",
+                margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
+                onTap: () async {
+                  Character reqBody = Character(
+                    id: widget.data?.id,
+                    name: nameController.text,
+                    status: statusController.text,
+                    species: speciesController.text,
+                    gender: genderController.text,
+                    avatar: widget.data?.avatar,
+                  );
+                  (widget.data == null
+                          ? myExampleProvider.addItem(reqBody, context)
+                          : myExampleProvider.updateItem(reqBody, context))
+                      .then(
+                    (value) {
+                      CusFlutterToast.showToast(
+                              "${widget.data == null ? "Save" : "Update"} Successfully")
+                          .then((value) {});
+                      Navigator.pop(context);
+                    },
+                  );
+                },
+              ),
+            )
           ],
         ),
       ),
-      bottomNavigationBar: CustomButton(
-        text: widget.data == null ? "Save" : "Update",
-        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 15),
-        onTap: () async {
-          Character reqBody = Character(
-            id: widget.data?.id,
-            name: nameController.text,
-            status: statusController.text,
-            species: speciesController.text,
-            gender: genderController.text,
-            avatar: widget.data?.avatar,
-          );
-          (widget.data == null
-                  ? myExampleProvider.addItem(reqBody, context)
-                  : myExampleProvider.updateItem(reqBody, context))
-              .then(
-            (value) {
-              CusFlutterToast.showToast(
-                      "${widget.data == null ? "Save" : "Update"} Successfully")
-                  .then((value) {});
-              Navigator.pop(context);
-            },
-          );
-        },
-      ),
-      resizeToAvoidBottomInset: false,
+      resizeToAvoidBottomInset: true,
     );
   }
 
